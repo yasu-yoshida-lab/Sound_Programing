@@ -7,21 +7,21 @@ int main(void)
   STEREO_PCM pcm0, pcm1;
   int n;
   
-  wave_read_16bit_stereo(&pcm0, "a.wav"); /* ‰¹ƒf[ƒ^‚Ì“ü—Í */
+  wave_read_16bit_stereo(&pcm0, "a.wav"); /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®å…¥åŠ› */
   
-  pcm1.fs = pcm0.fs; /* •W–{‰»ü”g” */
-  pcm1.bits = pcm0.bits; /* —Êq‰»¸“x */
-  pcm1.length = pcm0.length; /* ‰¹ƒf[ƒ^‚Ì’·‚³ */
-  pcm1.sL = calloc(pcm1.length, sizeof(double)); /* ‰¹ƒf[ƒ^i¶j */
-  pcm1.sR = calloc(pcm1.length, sizeof(double)); /* ‰¹ƒf[ƒ^i‰Ej */
+  pcm1.fs = pcm0.fs; /* æ¨™æœ¬åŒ–å‘¨æ³¢æ•° */
+  pcm1.bits = pcm0.bits; /* é‡å­åŒ–ç²¾åº¦ */
+  pcm1.length = pcm0.length; /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®é•·ã• */
+  pcm1.sL = calloc(pcm1.length, sizeof(double)); /* éŸ³ãƒ‡ãƒ¼ã‚¿ï¼ˆå·¦ï¼‰ */
+  pcm1.sR = calloc(pcm1.length, sizeof(double)); /* éŸ³ãƒ‡ãƒ¼ã‚¿ï¼ˆå³ï¼‰ */
   
   for (n = 0; n < pcm1.length; n++)
   {
-    pcm1.sL[n] = pcm0.sL[n]; /* ‰¹ƒf[ƒ^i¶j ‚ÌƒRƒs[ */
-    pcm1.sR[n] = pcm0.sR[n]; /* ‰¹ƒf[ƒ^i‰Ej‚ÌƒRƒs[ */
+    pcm1.sL[n] = pcm0.sL[n]; /* éŸ³ãƒ‡ãƒ¼ã‚¿ï¼ˆå·¦ï¼‰ ã®ã‚³ãƒ”ãƒ¼ */
+    pcm1.sR[n] = pcm0.sR[n]; /* éŸ³ãƒ‡ãƒ¼ã‚¿ï¼ˆå³ï¼‰ã®ã‚³ãƒ”ãƒ¼ */
   }
   
-  wave_write_16bit_stereo(&pcm1, "b.wav"); /* ‰¹ƒf[ƒ^‚Ìo—Í */
+  wave_write_16bit_stereo(&pcm1, "b.wav"); /* éŸ³ãƒ‡ãƒ¼ã‚¿ã®å‡ºåŠ› */
   
   free(pcm0.sL);
   free(pcm0.sR);
