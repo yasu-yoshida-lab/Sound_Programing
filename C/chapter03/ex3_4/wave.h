@@ -345,7 +345,7 @@ void wave_read_16bit_mono(MONO_PCM *pcm, char *file_name)
   pcm->bits = bits_per_sample; /* 量子化精度 */
   pcm->length = data_chunk_size / 2; /* 音データの長さ */
   pcm->s = calloc(pcm->length, sizeof(double)); /* メモリの確保 */
-
+  
   for (n = 0; n < pcm->length; n++)
   {
     fread(&data, 2, 1, fp); /* 音データの読み取り */
