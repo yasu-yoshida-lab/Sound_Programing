@@ -1,8 +1,7 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "wave.h"
+#include <iostream>
+#include "wave.hpp"
 
-int main(void) 
+int main()
 {
     MONO_PCM pcm0, pcm1;
 
@@ -11,7 +10,7 @@ int main(void)
     pcm1.fs = pcm0.fs;
     pcm1.bits = pcm0.bits;
     pcm1.length = pcm0.length;
-    pcm1.s = (double*)calloc(pcm1.length, sizeof(double));
+    pcm1.s.reserve(pcm1.length);
 
     for (int n = 0; n < pcm1.length; ++n) 
     {
@@ -19,9 +18,6 @@ int main(void)
     }
 
     wave_write_16bit_mono(&pcm1, "b.wav");
-
-    free(pcm0.s);
-    free(pcm1.s);
 
     return 0;
 }

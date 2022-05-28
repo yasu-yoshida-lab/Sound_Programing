@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "wave.h"
+#include "wave.hpp"
 
 int main(void) 
 {
@@ -11,8 +11,8 @@ int main(void)
     pcm1.fs = pcm0.fs;
     pcm1.bits = pcm0.bits;
     pcm1.length = pcm0.length;
-    pcm1.sL = (double*)calloc(pcm0.length, sizeof(double));
-    pcm1.sR = (double*)calloc(pcm0.length, sizeof(double));
+    pcm1.sL.reserve(pcm1.length);
+    pcm1.sR.reserve(pcm1.length);
 
     for (int n = 0; n < pcm1.length; ++n) 
     {
@@ -21,11 +21,6 @@ int main(void)
     }
 
     wave_write_16bit_stereo(&pcm1, "b.wav");
-
-    free(pcm0.sL);
-    free(pcm0.sR);
-    free(pcm1.sL);
-    free(pcm1.sR);
 
     return 0;
 }
